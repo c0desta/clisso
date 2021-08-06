@@ -121,11 +121,12 @@ func extractArns(attrs []saml.Attribute, pArn string) (arns []ARN) {
 						// we want to match the Id to any accounts/roles in our config
 						if len(ids) == 3 && accounts[ids[1]] != "" && accounts[ids[1]] != nil {
 							arn.Name = fmt.Sprintf("%s - %s", accounts[ids[1]].(string), ids[2])
+							arns = append(arns, arn)
 						}
 					}
 				}
 
-				arns = append(arns, arn)
+				
 			}
 
 			return
